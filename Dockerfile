@@ -5,8 +5,8 @@ FROM icr.io/codeengine/golang:alpine
 RUN apk add --no-cache python2 g++ make
 WORKDIR /app
 COPY . .
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y nodejs \
+RUN apk update update && apk update -y && \
+    apk add -y nodejs \
     npm
 RUN npm i -g yarn
 RUN yarn install --production
