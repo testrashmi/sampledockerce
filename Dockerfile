@@ -5,8 +5,9 @@ FROM icr.io/codeengine/golang:alpine
 RUN apk add --no-cache python2 g++ make
 WORKDIR /app
 COPY . .
-RUN npm --verbose install
-RUN npm run build
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs \
+    npm
 RUN npm i -g yarn
 RUN yarn install --production
 CMD ["node", "src/index.js"]
